@@ -20,4 +20,3 @@ void DeleteTable(HashTable*);
 
 int const MIN_HASHTABLE_SIZE = 4;
 double const GROWTH_FACTOR = 1.6;
-//коммент
