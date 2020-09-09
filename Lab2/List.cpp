@@ -1,100 +1,68 @@
-#include"List.h"
-#include<ctime>
-#include<string>
+#include "List.h"
+#include <ctime>
 
-void LineSearch(List* ourList, int searchItem)
-{
-	int i = 1;
-	Node* current = new Node;
-	current = ourList->Head;
-
-	for (i = 1; i <= ourList->Size; i++)
-	{
-		if (current->Data == searchItem)
-		{
-			cout << "Элемент " << i << " имеет искомое значение";
-		}
-		current = current->Next;
-	}
-}
-
-void Init(List* ourList, int itemNumber)
+void Initialization(List* list, int itemNumber)
 {
 	srand(time(nullptr));
 
-	for (int i = 1;  i <= itemNumber; i++)
+	for (int i = 0;  i < itemNumber; i++)
 	{
-		if (i == 1)
+		Node* newItem = new Node;
+		newItem->Data = rand() % MAX_VALUE_ITEMS * 2 - MAX_VALUE_ITEMS;
+
+		if (i == 0)
 		{
-			Node* newItem = new Node;
-			newItem->Data = rand() % maxValueEl * 2 - maxValueEl;
-			ourList->Head = newItem;
-			ourList->Tail = newItem;
+			list->Head = newItem;
+			list->Tail = newItem;
 			newItem->Next = newItem->Prev = nullptr;
 		}
 		else
-		{
-			Node* newItem = new Node;								
-			newItem->Data = rand() % maxValueEl * 2 - maxValueEl;
-			ourList->Head->Prev = newItem;
-			newItem->Next = ourList->Head;
-			ourList->Head = newItem;
+		{							
+			list->Head->Prev = newItem;
+			newItem->Next = list->Head;
+			list->Head = newItem;
 			newItem->Prev = nullptr;
 		}
-		ourList->Size++;
+		list->Size++;
 	}
 }
 
-void DeleteItem(List* ourList, int index)
+void DeleteItem(List* list, int index)
 {
-	int i=1;
-
-	if (ourList->Size)
+	if (IsListEmpty(list))
 	{
-		if (ourList->Head->Prev == ourList->Head->Next)
+		if (list->Head->Prev == list->Head->Next)
 		{
-			delete ourList->Head;
-			ourList->Head = ourList->Tail = nullptr;
+			delete list->Head;
+			list->Head = list->Tail = nullptr;
+		}
+		else if (index == 0)
+		{
+			list->Head = list->Head->Next;
+			delete list->Head->Prev;
+			list->Head->Prev = nullptr;
+		}
+		else if (index == list->Size - 1)
+		{
+			list->Tail = list->Tail->Prev;
+			delete list->Tail->Next;
+			list->Tail->Next = nullptr;
 		}
 		else
 		{
-			Node* current = ourList->Head;
+			Node* current = GetNode(list, index);
 
-			while (i != index)
-			{
-				for (i = 1; i < index; i++)
-				{
-					current = current->Next;
-				}
-			} 
-
-			if (current->Prev == nullptr)
-			{
-				ourList->Head = ourList->Head->Next;
-				delete ourList->Head->Prev;
-				ourList->Head->Prev = nullptr;
-			}
-			else if (current->Next == nullptr)
-			{
-				ourList->Tail = ourList->Tail->Prev;
-				delete ourList->Tail->Next;
-				ourList->Tail->Next = nullptr;
-			}
-			else
-			{
-				current->Prev->Next = current->Next;
-				current->Next->Prev = current->Prev;
-				delete current;
-			}
+			current->Prev->Next = current->Next;
+			current->Next->Prev = current->Prev;
+			delete current;
 		}
-		ourList->Size--;
+		list->Size--;
 	}
-	else cout << "У вас нет элементов";
 }
 
 void DeleteList(List* list)
 {
-	if (list && list->Head)
+	if (IsListEmpty)
 	{
 		Node* current = list->Head;
 
@@ -109,49 +77,41 @@ void DeleteList(List* list)
 	}
 }
 
-void AddItem(List* ourList, int index, int newItemValue)
+void AddItem(List* list, int index, int newItemValue)
 {
 	Node* newItem = new Node;
 	newItem->Data = newItemValue;
 
-	if (ourList->Size == 0)
+	if (list->Size == 0)
 	{
-		ourList->Head = newItem;
-		ourList->Tail = newItem;
+		list->Head = newItem;
+		list->Tail = newItem;
 		newItem->Next = newItem->Prev = nullptr;
 	}
-	else if ((index == 1)||(index==0))
+	else if (index == 0)
 	{
-		ourList->Head->Prev = newItem;
-		newItem->Next = ourList->Head;
-		ourList->Head = newItem;
+		list->Head->Prev = newItem;
+		newItem->Next = list->Head;
+		list->Head = newItem;
 		newItem->Prev = nullptr;
 	}
-	else if (index == ourList->Size+1)
+	else if (index == list->Size)
 	{
-		ourList->Tail->Next = newItem;
-		newItem->Prev = ourList->Tail;
-		ourList->Tail = newItem;
+		list->Tail->Next = newItem;
+		newItem->Prev = list->Tail;
+		list->Tail = newItem;
 		newItem->Next = nullptr;
 	}
-	else
+	else 
 	{
-		Node* current = new Node;
-		current = ourList->Head;
+		Node* current = GetNode(list, index);
 
-		for (int i = 1; i <= index; i++)
-		{
-			if (i == index)
-			{
-				newItem->Next = current;
-				newItem->Prev = current->Prev;
-				current->Prev->Next = newItem;
-				current->Prev = newItem;
-			}
-			current = current->Next;
-		}
+		newItem->Next = current;
+		newItem->Prev = current->Prev;
+		current->Prev->Next = newItem;
+		current->Prev = newItem;
 	}
-	ourList->Size++;
+	list->Size++;
 }
 
 List* CreatingList()
@@ -162,67 +122,24 @@ List* CreatingList()
 	return newList;
 }
 
-void ShowList(List* ourList)
+void Sort(List* list)
 {
-	Node* current = new Node;
-	current = ourList->Head;
-
-	cout << "В нашем листе " << ourList->Size << " элементов\n";
-
-	if (ourList->Size)
+	if (IsListEmpty(list))
 	{
-		for (int i = 1; i <= ourList->Size; i++)
+		for (int i = 0; i < list->Size; i++)
 		{
-			cout << "[" << i << "] " << current->Data << endl;
-			current = current->Next;
-		}
-	}
-}
-
-void MenuText()
-{
-	cout << "	\n";
-	cout << "	 _________________________MENU____________________\n";
-	cout << "	|Для удаления узла, нажмите: "
-		<<buttonDeleteItem<<"                    |\n";
-	cout << "	|Для вставки узла в начало, нажмите: "
-		<<buttonAddInBegin<<"            |\n";
-	cout << "	|Для вставки узла в конец, нажмите: "
-		<<buttonAddInEnd<<"             |\n";
-	cout << "	|Для вставки после определенного узла, нажмите: "
-		<<buttonAddAfter<<" |\n";
-	cout << "	|Для вставки перед определенным узлом, нажмите: "
-		<<buttonAddBefore<<" |\n";
-	cout << "	|Для сортировки списка, нажмите: "
-		<<buttonSort<<"                |\n";
-	cout << "	|Для линейного поиска в списке, нажмите: "
-		<<buttonLineSearch<<"        |\n";
-	cout << "	|Для завершения работы нажмите: "
-		<<buttonExit<<"                 |\n";
-	cout << "	|_________________________________________________|\n";
-	cout << "	\n";
-}
-
-void Sort(List* ourList)
-{
-	if (ListNotEmpty(ourList))
-	{
-		Node* current = new Node;
-		current = ourList->Head;
-
-		for (int i = 1; i <= ourList->Size; i++)
-		{
-			current = ourList->Head;
+			Node* current = list->Head;
 
 			while (current && current->Next)
 			{
 				if (current->Data > current->Next->Data)
 				{
 					Node* temp;
-					if (current == ourList->Head)
+
+					if (current == list->Head)
 					{
-						ourList->Head = current->Next;
-						ourList->Head->Prev = nullptr;
+						list->Head = current->Next;
+						list->Head->Prev = nullptr;
 					}
 					else
 					{
@@ -232,15 +149,16 @@ void Sort(List* ourList)
 					temp = current->Next->Next;
 					current->Next->Next = current;
 					current->Prev = current->Next;
-					if (current->Next != ourList->Tail)
+
+					if (current->Next != list->Tail)
 					{
 						current->Next = temp;
 						temp->Prev = current;
 					}
 					else
 					{
-						ourList->Tail = current;
-						ourList->Tail->Next = nullptr;
+						list->Tail = current;
+						list->Tail->Next = nullptr;
 					}
 				}
 				current = current->Next;
@@ -249,9 +167,9 @@ void Sort(List* ourList)
 	}
 }
 
-bool ListNotEmpty(List* List)
+bool IsListEmpty(List* list)
 {
-	if (List->Size == 0)
+	if (list->Size == 0)
 	{
 		return false;
 	}
@@ -261,53 +179,45 @@ bool ListNotEmpty(List* List)
 	}
 }
 
-bool CheckingForInteger(string value)
+Node* GetNode(List* list, int index)
 {
-	int size = value.length();
+	Node* current = new Node;
 
-	if (isdigit(value[0]) || value[0] == '-')
+	if (index < list->Size / 2)
 	{
-		for (int i = 1; i < size; i++)
+		current = list->Head;
+
+		for (int i = 0; i < index; i++)
 		{
-			if (!isdigit(value[i]))
-			{
-				return false;
-			}
+			current = current->Next;
 		}
 	}
 	else
 	{
-		return false;
+		current = list->Tail;
+
+		for (int i = list->Size - 1; i > index; i--)
+		{
+			current = current->Prev;
+		}
 	}
+	return current;
 }
 
-int InputValidation(int min, int max)
+int LineSearch(List* list, int searchItem)
 {
-	string inputValue;
-	int outputValue;
-	
-	while (true)
+	if (IsListEmpty(list))
 	{
-		getline(cin, inputValue);
+		Node* current = list->Head;
 
-		if (CheckingForInteger(inputValue) == false)
+		for (int i = 0; i < list->Size; i++)
 		{
-			cout << endl << "Ошибка! Введите цифры. ";
-			inputValue.clear();
-		}
-		else
-		{
-			outputValue = stoi(inputValue);
-
-			if ((outputValue > max) || (outputValue < min))
+			if (current->Data == searchItem)
 			{
-				cout << "Похоже вы вводите число вне доступного диапазона, "
-					<<"попробуйте заново. ";
+				return i;
 			}
-			else
-			{
-				return outputValue;
-			}
+			current = current->Next;
 		}
+		return -1;
 	}
 }

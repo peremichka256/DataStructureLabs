@@ -1,95 +1,101 @@
-#include"List.h"
+#include "List.h"
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	cout << "Введите, сколько будет в вашем листе элементов(не менее "
-		<< minNumberEl << " и не более " << maxNumberEl << ") ";
+		<< MIN_NUMBER_ITEMS << " и не более " << MAX_NUMBER_ITEMS << ") ";
+	List* list = CreatingList();
+	Initialization(list, InputValidation(MIN_NUMBER_ITEMS, MAX_NUMBER_ITEMS));
+	bool isExitFromWhile = true;
 
-	List* ourList = CreatingList();
-	Init(ourList, InputValidation(minNumberEl, maxNumberEl));
-	
-	int button;
-	bool exitFromWhile = true;
-
-	while (exitFromWhile)
+	while (isExitFromWhile)
 	{
-		ShowList(ourList);
+		ShowList(list);
 		MenuText();
-		button = InputValidation(firstButton, LastButton);
+		int button = InputValidation(0, 7);
 
 		switch (button)
 		{
-			case buttonExit:
+			case 0:
 			{
 				cout << "\nРабота окончена\n";
-				DeleteList(ourList);
+				DeleteList(list);
 				return 0;
 			}
-			case buttonDeleteItem:
+			case 1:
 			{
-				if (ListNotEmpty(ourList))
-				{
-					cout << "Введите номер элемента который хотите удалить ";
-					DeleteItem(ourList, InputValidation(minNumberEl, ourList->Size));
-				}
+				cout << "Введите номер элемента который хотите удалить ";
+				int indexToDelete = InputValidation(MIN_NUMBER_ITEMS,
+					list->Size);
+				DeleteItem(list, indexToDelete);
 				system("cls");
 				break;
 			}
-			case buttonAddInBegin:
+			case 2:
 			{
 				cout << "Введите элемент который хотите добавить в начало ";
-				AddItem(ourList, 1, InputValidation(minValueEl, maxValueEl));
+				AddItem(list, 0, InputValidation(MIN_VALUE_ITEMS,
+					MAX_VALUE_ITEMS));
 				system("cls");
 				break;
 			}
-			case buttonAddInEnd:
+			case 3:
 			{
 				cout << "Введите элемент который хотите добавить в конец ";
-				AddItem(ourList, ourList->Size + 1, InputValidation(minValueEl,maxValueEl));
+				AddItem(list, list->Size, 
+					InputValidation(MIN_VALUE_ITEMS, MAX_VALUE_ITEMS));
 				system("cls");
 				break;
 			}
-			case buttonAddAfter:
+			case 4:
 			{
-				if (ListNotEmpty(ourList))
+				if (IsListEmpty(list))
 				{
 					cout << "Ведите номер элемента после которого добавится "
 						<<"новый элемент ";
-					int index = InputValidation(minNumberEl, ourList->Size);
+					int index = InputValidation(MIN_NUMBER_ITEMS, list->Size);
 					cout << "Введите новый элемент ";
-					AddItem(ourList, index + 1, InputValidation(minValueEl,
-						maxValueEl));
+					int value = InputValidation(MIN_VALUE_ITEMS, MAX_VALUE_ITEMS);
+					AddItem(list, index + 1, value);
 				}
 				system("cls");
 				break;
 			}
-			case buttonAddBefore:
+			case 5:
 			{
-				if (ListNotEmpty(ourList))
+				if (IsListEmpty(list))
 				{
 					cout << "Ведите номер элемента перед которым добавится "
-						<<"новый элемент";
-					int index = InputValidation(minNumberEl, ourList->Size);
+						<<"новый элемент ";
+					int index = InputValidation(MIN_NUMBER_ITEMS, list->Size);
 					cout << "Введите новый элемент ";
-					AddItem(ourList, index, InputValidation(minValueEl,
-						maxValueEl));
+					AddItem(list, index, InputValidation(MIN_VALUE_ITEMS,
+						MAX_VALUE_ITEMS));
 				}
 				system("cls");
 				break;
 			}
-			case buttonSort:
+			case 6:
 			{
-				Sort(ourList);
+				Sort(list);
 				system("cls");
 				break;
 			}
-			case buttonLineSearch:
+			case 7:
 			{
-				if (ListNotEmpty(ourList))
+				cout << "Введите элемент который хотите найти в листе ";
+				int searchItem = InputValidation(MIN_VALUE_ITEMS, MAX_VALUE_ITEMS);
+				int foundItemIndex = LineSearch(list, searchItem);
+
+				if (foundItemIndex == -1)
 				{
-					cout << "Введите элемент который хотите найти в листе ";
-					LineSearch(ourList, InputValidation(minValueEl, maxValueEl));
+					cout << "В вашем списке нет этого элемента\n";
+				}
+				else
+				{
+					cout << foundItemIndex << "-й элемент"
+						<< " в списке соответствует искомому значению.\n ";
 				}
 				break;
 			}

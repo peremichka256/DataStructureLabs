@@ -1,13 +1,7 @@
 #pragma once
-#include<iostream>
+#include <iostream>
+#include "Node.h"
 using namespace std;
-
-struct Node
-{
-	int Data;
-	Node* Next;
-	Node* Prev;
-};
 
 struct List
 {
@@ -18,28 +12,20 @@ struct List
 
 void MenuText();
 List* CreatingList();
-void Init(List*, int);
+void Initialization(List*, int itemNumber);
 void AddItem(List*, int index, int newItemValue);
 void Sort(List*);
-void LineSearch(List*, int);
+int LineSearch(List*, int searchItem);
 void ShowList(List*);
 void DeleteList(List*);
-void DeleteItem(List*, int);
-bool ListNotEmpty(List*);
+void DeleteItem(List*, int index);
+bool IsListEmpty(List*);
 bool CheckingForInteger(string value);
 int InputValidation(int min, int max);
+Node* GetNode(List*, int index);
 
-const int minNumberEl = 1;
-const int maxNumberEl = 100;
-const int minValueEl = -100;
-const int maxValueEl = 100;
-const int buttonExit = 0;
-const int buttonDeleteItem = 1;
-const int buttonAddInBegin = 2;
-const int buttonAddInEnd = 3;
-const int buttonAddAfter = 4;
-const int buttonAddBefore = 5;
-const int buttonSort = 6;
-const int buttonLineSearch = 7;
-const int firstButton = 0;
-const int LastButton = 7;
+const int MIN_NUMBER_ITEMS = 0;
+const int MAX_NUMBER_ITEMS = 100;
+const int MIN_VALUE_ITEMS = -100;
+const int MAX_VALUE_ITEMS = 100;
+const int MAX_INTEGER = 11;
