@@ -2,9 +2,8 @@
 
 int main()
 {
-	setlocale(LC_ALL, "Rus");
-	cout << "Введите, сколько будет в вашем листе элементов(не менее "
-		<< MIN_NUMBER_ITEMS << " и не более " << MAX_NUMBER_ITEMS << ") ";
+	cout << "Enter the dimension of your List(not less than "
+		<< MIN_NUMBER_ITEMS << " and no more than " << MAX_NUMBER_ITEMS << ") ";
 	List* list = CreatingList();
 	Initialization(list, InputValidation(MIN_NUMBER_ITEMS, MAX_NUMBER_ITEMS));
 	bool isExitFromWhile = true;
@@ -19,13 +18,13 @@ int main()
 		{
 			case 0:
 			{
-				cout << "\nРабота окончена\n";
+				cout << "\nWork is completing.\n";
 				DeleteList(list);
 				return 0;
 			}
 			case 1:
 			{
-				cout << "Введите номер элемента который хотите удалить ";
+				cout << "Enter the number of the node you want to delete ";
 				int indexToDelete = InputValidation(MIN_NUMBER_ITEMS,
 					list->Size);
 				DeleteItem(list, indexToDelete);
@@ -34,7 +33,8 @@ int main()
 			}
 			case 2:
 			{
-				cout << "Введите элемент который хотите добавить в начало ";
+				cout << "Enter the number value of the node you want to insert"
+					<< "at the beginig ";
 				AddItem(list, 0, InputValidation(MIN_VALUE_ITEMS,
 					MAX_VALUE_ITEMS));
 				system("cls");
@@ -42,7 +42,8 @@ int main()
 			}
 			case 3:
 			{
-				cout << "Введите элемент который хотите добавить в конец ";
+				cout << "Enter the number value of the node you want to insert "
+					<< "at the end ";
 				AddItem(list, list->Size, 
 					InputValidation(MIN_VALUE_ITEMS, MAX_VALUE_ITEMS));
 				system("cls");
@@ -52,10 +53,10 @@ int main()
 			{
 				if (IsListEmpty(list))
 				{
-					cout << "Ведите номер элемента после которого добавится "
-						<<"новый элемент ";
+					cout << "Enter the number of the node after which the new "
+						<< "node is insert ";
 					int index = InputValidation(MIN_NUMBER_ITEMS, list->Size);
-					cout << "Введите новый элемент ";
+					cout << "Enter the new node value ";
 					int value = InputValidation(MIN_VALUE_ITEMS, MAX_VALUE_ITEMS);
 					AddItem(list, index + 1, value);
 				}
@@ -66,10 +67,10 @@ int main()
 			{
 				if (IsListEmpty(list))
 				{
-					cout << "Ведите номер элемента перед которым добавится "
-						<<"новый элемент ";
+					cout << "Enter the number of the node before which the new "
+						<< "node is insert ";
 					int index = InputValidation(MIN_NUMBER_ITEMS, list->Size);
-					cout << "Введите новый элемент ";
+					cout << "Enter the new node value ";
 					AddItem(list, index, InputValidation(MIN_VALUE_ITEMS,
 						MAX_VALUE_ITEMS));
 				}
@@ -84,18 +85,19 @@ int main()
 			}
 			case 7:
 			{
-				cout << "Введите элемент который хотите найти в листе ";
+				cout << "Enter the node value that you want to find "
+					<< "in the list ";
 				int searchItem = InputValidation(MIN_VALUE_ITEMS, MAX_VALUE_ITEMS);
 				int foundItemIndex = LineSearch(list, searchItem);
 
 				if (foundItemIndex == -1)
 				{
-					cout << "В вашем списке нет этого элемента\n";
+					cout << "This value was not found\n";
 				}
 				else
 				{
-					cout << foundItemIndex << "-й элемент"
-						<< " в списке соответствует искомому значению.\n ";
+					cout << foundItemIndex << "s item"
+						<< " is desired.\n ";
 				}
 				break;
 			}

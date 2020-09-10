@@ -7,7 +7,7 @@ void ShowList(List* ourList)
 
 	if (IsListEmpty(ourList))
 	{
-		cout << "В вашем списке " << ourList->Size << " элементов\n";
+		cout <<  ourList->Size << " items at ur lsit.\n";
 		for (int i = 0; i < ourList->Size; i++)
 		{
 			cout << "[" << i << "] " << current->Data << endl;
@@ -16,7 +16,7 @@ void ShowList(List* ourList)
 	}
 	else
 	{
-		cout << "Ваш список пуст";
+		cout << "Ur list is empty.";
 	}
 }
 
@@ -24,15 +24,15 @@ void MenuText()
 {
 	cout << "	\n";
 	cout << "	 _________________________MENU____________________\n";
-	cout << "	|Для удаления узла, нажмите: 1                    |\n";
-	cout << "	|Для вставки узла в начало, нажмите: 2            |\n";
-	cout << "	|Для вставки узла в конец, нажмите: 3             |\n";
-	cout << "	|Для вставки после определенного узла, нажмите: 4 |\n";
-	cout << "	|Для вставки перед определенным узлом, нажмите: 5 |\n";
-	cout << "	|Для сортировки списка, нажмите: 6                |\n";
-	cout << "	|Для линейного поиска в списке, нажмите: 7        |\n";
-	cout << "	|Для завершения работы нажмите: 0                 |\n";
-	cout << "	|_________________________________________________|\n";
+	cout << "	|To delete node from the list, press: 1          |\n";
+	cout << "	|To insert an node at the list beginnig, press: 2|\n";
+	cout << "	|To insert an node at the list end, press: 3     |\n";
+	cout << "	|To insert after a certain node, click: 4        |\n";
+	cout << "	|To insert before a certain node, click: 5       |\n";
+	cout << "	|To sort the list, press: 6                      |\n";
+	cout << "	|To linear search in the list, press: 7          |\n";
+	cout << "	|To complete the work, press: 0                  |\n";
+	cout << "	|________________________________________________|\n";
 	cout << "	\n";
 }
 
@@ -72,7 +72,7 @@ int InputValidation(int min, int max)
 				|| stoll(inputValue) < min
 				|| stoll(inputValue) > max)
 			{
-				cout << endl << "Ошибка! Попробуйте еще раз:\a ";
+				cout << endl << "Error! Try again:\a ";
 				inputValue.clear();
 			}
 			else
@@ -83,7 +83,7 @@ int InputValidation(int min, int max)
 		}
 		else
 		{
-			cout << endl << "Ошибка! Попробуйте еще раз: ";
+			cout << endl << "Error! Try again: ";
 			inputValue.clear();
 		}
 	}

@@ -15,7 +15,7 @@ List* CreatingList();
 void Initialization(List*, int itemNumber);
 void AddItem(List*, int index, int newItemValue);
 void Sort(List*);
-int LineSearch(List*, int searchItem);
+int LineSearch(List*, int searchItemValue);
 void ShowList(List*);
 void DeleteList(List*);
 void DeleteItem(List*, int index);

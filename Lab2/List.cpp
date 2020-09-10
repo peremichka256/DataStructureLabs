@@ -204,7 +204,7 @@ Node* GetNode(List* list, int index)
 	return current;
 }
 
-int LineSearch(List* list, int searchItem)
+int LineSearch(List* list, int searchItemValue)
 {
 	if (IsListEmpty(list))
 	{
@@ -212,7 +212,7 @@ int LineSearch(List* list, int searchItem)
 
 		for (int i = 0; i < list->Size; i++)
 		{
-			if (current->Data == searchItem)
+			if (current->Data == searchItemValue)
 			{
 				return i;
 			}
