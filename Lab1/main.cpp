@@ -10,12 +10,12 @@ int main()
 		<< "введите размерность вашего массива(не больше "
 		<< MAX_LENGTH << " элементов): ";
 
-	DynamicArray* ourDynamicArray = CreateDynamicArray();
+	DynamicArray* dynamicArray = CreateDynamicArray();
 	bool isExitFromWhile = true;
 
 	while (isExitFromWhile)
 	{
-		ShowArray(ourDynamicArray);
+		ShowArray(dynamicArray);
 		cout << "Вот ваш массив\n";
 		MenuText();
 		int button = InputValidation(0, 8);
@@ -25,55 +25,55 @@ int main()
 			case 0:
 			{
 				cout << "Окончание работы.\n";
-				DeleteDynamicArray(ourDynamicArray);
+				DeleteDynamicArray(dynamicArray);
 				return 0;
 			}
 			case 1:
 			{
 				system("CLS");
-				DefineFieldArray(ourDynamicArray);
+				DefineFieldArray(dynamicArray);
 				break;
 			}
 			case 2:
 			{
-				if (IsArrayEmpty(ourDynamicArray))
+				if (IsArrayEmpty(dynamicArray))
 				{
 					cout << "Введите номер элемента, который вы хотите удалить ";
-					DeleteItem(ourDynamicArray, InputValidation(MIN_LENGTH,
-						ourDynamicArray->Length - 1));
+					DeleteItem(dynamicArray, InputValidation(MIN_LENGTH,
+						dynamicArray->Length - 1));
 					system("CLS");
 					break;
 				}
 			}
 			case 3:
 			{
-				RecreatingMemory(ourDynamicArray);
+				RecreatingMemory(dynamicArray);
 				cout << "Введите элемент, который вы хотите добавить "
 					<< "(не меньше" << MIN_ELEMENT << " и не больше " << MAX_ELEMENT << ") ";
-				InsertByIndex(ourDynamicArray, 0, InputValidation(MIN_ELEMENT, MAX_ELEMENT));
+				InsertByIndex(dynamicArray, 0, InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 				system("CLS");
 				break;
 			}
 			case 4:
 			{
-				RecreatingMemory(ourDynamicArray);
+				RecreatingMemory(dynamicArray);
 				cout << "Введите элемент, который вы хотите добавить "
 					<< "(не меньше" << MIN_ELEMENT << " и не больше " << MAX_ELEMENT << ") ";
-				InsertByIndex(ourDynamicArray, ourDynamicArray->Length,
+				InsertByIndex(dynamicArray, dynamicArray->Length,
 					InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 				system("CLS");
 				break;
 			}
 			case 5:
 			{
-				if(IsArrayEmpty(ourDynamicArray))
+				if(IsArrayEmpty(dynamicArray))
 				{
-					RecreatingMemory(ourDynamicArray);
+					RecreatingMemory(dynamicArray);
 					cout << "Ведите после какого элемента вы хотите вставить новый ";
 					int index = InputValidation(MIN_LENGTH, MAX_LENGTH);
 					cout << "Введите элемент, который вы хотите добавить "
 						<< "(не меньше" << MIN_ELEMENT << " и не больше " << MAX_ELEMENT << ") ";
-					InsertByIndex(ourDynamicArray, index+1,
+					InsertByIndex(dynamicArray, index+1,
 						InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 					system("CLS");
 					break;
@@ -82,30 +82,30 @@ int main()
 			}
 			case 6:
 			{
-				if (IsArrayEmpty(ourDynamicArray))
+				if (IsArrayEmpty(dynamicArray))
 				{
 					system("CLS");
-					Sort(ourDynamicArray);
+					Sort(dynamicArray);
 					break;
 				}
 			}
 			case 7:
 			{
-				if (IsArrayEmpty(ourDynamicArray))
+				if (IsArrayEmpty(dynamicArray))
 				{
 					cout << "Введите число, которое вы хотите найти в массиве ";
 					int key = InputValidation(MIN_ELEMENT, MAX_ELEMENT);
-					LineSearch(ourDynamicArray, key);
+					LineSearch(dynamicArray, key);
 					break;
 				}
 			}
 			case 8:
 			{
-				if (IsArrayEmpty(ourDynamicArray))
+				if (IsArrayEmpty(dynamicArray))
 				{
 					cout << "Введите число, которое вы хотите найти в массиве ";
 					int key = InputValidation(MIN_ELEMENT, MAX_ELEMENT);
-					BinarSearch(ourDynamicArray, key);
+					BinarSearch(dynamicArray, key);
 					break;
 				}
 			}

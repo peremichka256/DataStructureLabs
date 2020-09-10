@@ -1,6 +1,6 @@
 #pragma once
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
 
 struct DynamicArray
@@ -27,5 +27,3 @@ const int MIN_ELEMENT = -100;
 const int MAX_ELEMENT = 100;
 const int MIN_LENGTH = 0;
 const int MAX_LENGTH = 100;
-
-//make something

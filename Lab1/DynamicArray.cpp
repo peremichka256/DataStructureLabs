@@ -4,17 +4,17 @@
 
 DynamicArray* CreateDynamicArray()
 {
-	DynamicArray* ourDynamicArray = new DynamicArray;
-	ourDynamicArray->Capacity = InputValidation(MIN_LENGTH, MAX_LENGTH);
-	ourDynamicArray->Array = new int[ourDynamicArray->Capacity];
-	ourDynamicArray->Length = 0;
+	DynamicArray* dynamicArray = new DynamicArray;
+	dynamicArray->Capacity = InputValidation(MIN_LENGTH, MAX_LENGTH);
+	dynamicArray->Array = new int[dynamicArray->Capacity];
+	dynamicArray->Length = 0;
 
-	for (int i = 0; i < ourDynamicArray->Capacity; i++)
+	for (int i = 0; i < dynamicArray->Capacity; i++)
 	{
-		ourDynamicArray->Array[i] = rand() % MAX_ELEMENT * 2 - MAX_ELEMENT;
-		ourDynamicArray->Length++;
+		dynamicArray->Array[i] = rand() % MAX_ELEMENT * 2 - MAX_ELEMENT;
+		dynamicArray->Length++;
 	}
-	return ourDynamicArray;
+	return dynamicArray;
 }
 
 void DeleteDynamicArray(DynamicArray* dynamicArray)
@@ -35,6 +35,7 @@ void RecreatingMemory(DynamicArray* dynamicArray)
 	}
 }
 
+//TODO: перенести весь вывод в OutputFunc(?!)
 void DefineFieldArray(DynamicArray* dynamicArray)
 {
 	cout << "\nПолный доступный объем массива = " << dynamicArray->Capacity
@@ -78,6 +79,7 @@ void Sort(DynamicArray* dynamicArray)
 	}
 }
 
+//TODO: перенести весь вывод в OutputFunc(?!)
 void LineSearch(DynamicArray* dynamicArray,int key)
 {
 	int counter = 0;
@@ -96,6 +98,7 @@ void LineSearch(DynamicArray* dynamicArray,int key)
 	}
 }
 
+//TODO: перенести весь вывод в OutputFunc(?!)
 void BinarSearch(DynamicArray* dynamicArray, int key)
 {
 	Sort(dynamicArray);
