@@ -5,8 +5,7 @@
 int main()
 {
 	srand(time(nullptr));
-	cout << "Start by creating an array, "
-		<< "enter the dimension of your array(no more than "
+	cout << "Enter the dimension of your array(no more than "
 		<< MAX_LENGTH << " elements): ";
 
 	DynamicArray* dynamicArray = CreateDynamicArray();
@@ -48,7 +47,7 @@ int main()
 			{
 				//Insert at the beginning
 				RecreatingMemory(dynamicArray);
-				cout << "Enter the item you want to insert "
+				cout << "Enter the item value you want to insert "
 					<< "(not less than" << MIN_ELEMENT << " and not more than " << MAX_ELEMENT << ") ";
 				InsertByIndex(dynamicArray, 0, InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 				system("CLS");
@@ -58,7 +57,7 @@ int main()
 			{
 				//Insert at the end
 				RecreatingMemory(dynamicArray);
-				cout << "Enter the item you want to insert "
+				cout << "Enter the item value you want to insert "
 					<< "(not less than" << MIN_ELEMENT << " and not more than " << MAX_ELEMENT << ") ";
 				InsertByIndex(dynamicArray, dynamicArray->Length,
 					InputValidation(MIN_ELEMENT, MAX_ELEMENT));
@@ -72,7 +71,7 @@ int main()
 					RecreatingMemory(dynamicArray);
 					cout << "Enter the item after which you want to insert the new item ";
 					int index = InputValidation(MIN_LENGTH, MAX_LENGTH);
-					cout << "Enter the item you want to insert "
+					cout << "Enter the item value you want to insert "
 						<< "(not less than" << MIN_ELEMENT << " and not more thanå " << MAX_ELEMENT << ") ";
 					InsertByIndex(dynamicArray, index+1,
 						InputValidation(MIN_ELEMENT, MAX_ELEMENT));
@@ -94,7 +93,7 @@ int main()
 			{
 				if (IsArrayEmpty(dynamicArray))
 				{
-					cout << "Enter the number you want to find in the array ";
+					cout << "Enter the value you want to find in the array ";
 					int key = InputValidation(MIN_ELEMENT, MAX_ELEMENT);
 					LineSearch(dynamicArray, key);
 					break;
@@ -104,7 +103,7 @@ int main()
 			{
 				if (IsArrayEmpty(dynamicArray))
 				{
-					cout << "Enter the number you want to find in the array ";
+					cout << "Enter the value you want to find in the array ";
 					int key = InputValidation(MIN_ELEMENT, MAX_ELEMENT);
 					BinarySearch(dynamicArray, key);
 					break;

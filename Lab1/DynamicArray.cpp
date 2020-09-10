@@ -38,7 +38,7 @@ void RecreatingMemory(DynamicArray* dynamicArray)
 //TODO: move all the output to OutputFunc(?!)
 void DefineFieldArray(DynamicArray* dynamicArray)
 {
-	cout << "\nTotal available volume of array = " << dynamicArray->Capacity
+	cout << "\nCapacity of array = " << dynamicArray->Capacity
 		<< " items";
 	cout << "\nCurrently in the array " << dynamicArray->Length
 		<< " items\n";
