@@ -20,7 +20,7 @@ void DeleteItem(DynamicArray* dynamicArray, int indexToDelete);
 void InsertByIndex(DynamicArray* dynamicArray, int item, int itemValue);
 void Sort(DynamicArray* dynamicArray);
 void LineSearch(DynamicArray* dynamicArray, int key);
-void BinarSearch(DynamicArray* dynamicArray, int key);
+void BinarySearch(DynamicArray* dynamicArray, int key);
 
 const double GROWTH_FACTOR = 1.5;
 const int MIN_ELEMENT = -100;

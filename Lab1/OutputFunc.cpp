@@ -4,7 +4,7 @@ bool IsArrayEmpty(DynamicArray* dynamicArray)
 {
 	if (dynamicArray->Length == 0)
 	{
-		cout << "В вашем массиве нет элементов\n";
+		cout << "Ur array is empty\n";
 		return false;
 	}
 	else
@@ -21,7 +21,7 @@ int InputValidation(int min, int max)
 	{
 		cin.clear();
 		cin.ignore(BUFSIZ, '\n');
-		cout << "Ошибка!\n ";
+		cout << "Error!\n ";
 	}
 	return value;
 }
@@ -29,17 +29,17 @@ int InputValidation(int min, int max)
 void MenuText()
 {
 	cout << "	\n";
-	cout << "	 _________________________MENU_______________________ \n";
-	cout << "	|Для определения полей массива, нажмите: 1           |\n";
-	cout << "	|Для удаление элемента из массива, нажмите: 2        |\n";
-	cout << "	|Для вставки элемента в начало, нажмите: 3           |\n";
-	cout << "	|Для вставки элемента в конец, нажмите: 4            |\n";
-	cout << "	|Для вставки после определенного элемента, нажмите: 5|\n";
-	cout << "	|Для сортировки массива, нажмите: 6                  |\n";
-	cout << "	|Для линейного поиска в массиве, нажмите: 7          |\n";
-	cout << "	|Для бинарного поиска в массиве, нажмите: 8          |\n";
-	cout << "	|Для завершения работы нажмите: 0                    |\n";
-	cout << "	|____________________________________________________|\n";
+	cout << "	 _________________________MENU__________________\n";
+	cout << "	|To get information about the array, press 1    |\n";
+	cout << "	|To remove an item from the array, press: 2     |\n";
+	cout << "	|To insert an item at the beginning, press: 3   |\n";
+	cout << "	|To insert an item at the end, press: 4         |\n";
+	cout << "	|To insert after a item, press: 5               |\n";
+	cout << "	|To sort the array, press: 6                    |\n";
+	cout << "	|For line search in array, press: 7             |\n";
+	cout << "	|For binary search in array, press: 8           |\n";
+	cout << "	|To complete the work, press: 0                 |\n";
+	cout << "	|_______________________________________________|\n";
 	cout << "	\n";
 }
 

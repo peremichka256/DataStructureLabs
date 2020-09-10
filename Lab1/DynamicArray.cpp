@@ -35,13 +35,13 @@ void RecreatingMemory(DynamicArray* dynamicArray)
 	}
 }
 
-//TODO: перенести весь вывод в OutputFunc(?!)
+//TODO: move all the output to OutputFunc(?!)
 void DefineFieldArray(DynamicArray* dynamicArray)
 {
-	cout << "\nѕолный доступный объем массива = " << dynamicArray->Capacity
-		<< " элементов";
-	cout << "\nј на данный момент в массиве " << dynamicArray->Length
-		<< " элементов\n";
+	cout << "\nTotal available volume of array = " << dynamicArray->Capacity
+		<< " items";
+	cout << "\nCurrently in the array " << dynamicArray->Length
+		<< " items\n";
 }
 
 void DeleteItem(DynamicArray* dynamicArray, int indexToDelete)
@@ -79,7 +79,7 @@ void Sort(DynamicArray* dynamicArray)
 	}
 }
 
-//TODO: перенести весь вывод в OutputFunc(?!)
+//TODO: move all the output to OutputFunc(?!)
 void LineSearch(DynamicArray* dynamicArray,int key)
 {
 	int counter = 0;
@@ -88,25 +88,25 @@ void LineSearch(DynamicArray* dynamicArray,int key)
 	{
 		if (dynamicArray->Array[i] == key)
 		{
-			cout << "Ёлемент " << i << " равен искомому числу\n";
+			cout << "Item " << i << "is equal to the value\n";
 			counter++;
 		}
 	}
 	if (counter == 0)
 	{
-		cout << "»скомое число не было найдено в массиве\n";
+		cout << "The desired value was not found in the array\n";
 	}
 }
 
-//TODO: перенести весь вывод в OutputFunc(?!)
-void BinarSearch(DynamicArray* dynamicArray, int key)
+//TODO: move all the output to OutputFunc(?!)
+void BinarySearch(DynamicArray* dynamicArray, int key)
 {
 	Sort(dynamicArray);
 	int checking = dynamicArray->Length;
 
 	if ((checking == 1))
 	{
-		cout << "\nЁлемент массива номер 0 равен искомому элементу\n";
+		cout << "\nArray item number 0 equals the desired element\n";
 	}
 
 	else
@@ -132,8 +132,8 @@ void BinarSearch(DynamicArray* dynamicArray, int key)
 			if (dynamicArray->Array[mid] == key)
 			{
 				counter++;
-				cout << "\nЁлемент массива номер " << mid
-					<< " равен искомому элементу\n";
+				cout << "\nItem " << mid
+					<< " is equal to the value\n";
 			}
 			else if (dynamicArray->Array[mid] > key)
 			{

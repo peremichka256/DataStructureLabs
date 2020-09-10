@@ -4,11 +4,10 @@
 
 int main()
 {
-	setlocale(LC_ALL, "rus");
 	srand(time(nullptr));
-	cout << "Начнём с создания массива, "
-		<< "введите размерность вашего массива(не больше "
-		<< MAX_LENGTH << " элементов): ";
+	cout << "Start by creating an array, "
+		<< "enter the dimension of your array(no more than "
+		<< MAX_LENGTH << " elements): ";
 
 	DynamicArray* dynamicArray = CreateDynamicArray();
 	bool isExitFromWhile = true;
@@ -16,7 +15,7 @@ int main()
 	while (isExitFromWhile)
 	{
 		ShowArray(dynamicArray);
-		cout << "Вот ваш массив\n";
+		cout << "Here is ur array\n";
 		MenuText();
 		int button = InputValidation(0, 8);
 
@@ -24,7 +23,7 @@ int main()
 		{
 			case 0:
 			{
-				cout << "Окончание работы.\n";
+				cout << "Work is completing.\n";
 				DeleteDynamicArray(dynamicArray);
 				return 0;
 			}
@@ -38,7 +37,7 @@ int main()
 			{
 				if (IsArrayEmpty(dynamicArray))
 				{
-					cout << "Введите номер элемента, который вы хотите удалить ";
+					cout << "Enter the number of the item you want to delete ";
 					DeleteItem(dynamicArray, InputValidation(MIN_LENGTH,
 						dynamicArray->Length - 1));
 					system("CLS");
@@ -47,18 +46,20 @@ int main()
 			}
 			case 3:
 			{
+				//Insert at the beginning
 				RecreatingMemory(dynamicArray);
-				cout << "Введите элемент, который вы хотите добавить "
-					<< "(не меньше" << MIN_ELEMENT << " и не больше " << MAX_ELEMENT << ") ";
+				cout << "Enter the item you want to insert "
+					<< "(not less than" << MIN_ELEMENT << " and not more than " << MAX_ELEMENT << ") ";
 				InsertByIndex(dynamicArray, 0, InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 				system("CLS");
 				break;
 			}
 			case 4:
 			{
+				//Insert at the end
 				RecreatingMemory(dynamicArray);
-				cout << "Введите элемент, который вы хотите добавить "
-					<< "(не меньше" << MIN_ELEMENT << " и не больше " << MAX_ELEMENT << ") ";
+				cout << "Enter the item you want to insert "
+					<< "(not less than" << MIN_ELEMENT << " and not more than " << MAX_ELEMENT << ") ";
 				InsertByIndex(dynamicArray, dynamicArray->Length,
 					InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 				system("CLS");
@@ -69,10 +70,10 @@ int main()
 				if(IsArrayEmpty(dynamicArray))
 				{
 					RecreatingMemory(dynamicArray);
-					cout << "Ведите после какого элемента вы хотите вставить новый ";
+					cout << "Enter the item after which you want to insert the new item ";
 					int index = InputValidation(MIN_LENGTH, MAX_LENGTH);
-					cout << "Введите элемент, который вы хотите добавить "
-						<< "(не меньше" << MIN_ELEMENT << " и не больше " << MAX_ELEMENT << ") ";
+					cout << "Enter the item you want to insert "
+						<< "(not less than" << MIN_ELEMENT << " and not more thanе " << MAX_ELEMENT << ") ";
 					InsertByIndex(dynamicArray, index+1,
 						InputValidation(MIN_ELEMENT, MAX_ELEMENT));
 					system("CLS");
@@ -93,7 +94,7 @@ int main()
 			{
 				if (IsArrayEmpty(dynamicArray))
 				{
-					cout << "Введите число, которое вы хотите найти в массиве ";
+					cout << "Enter the number you want to find in the array ";
 					int key = InputValidation(MIN_ELEMENT, MAX_ELEMENT);
 					LineSearch(dynamicArray, key);
 					break;
@@ -103,9 +104,9 @@ int main()
 			{
 				if (IsArrayEmpty(dynamicArray))
 				{
-					cout << "Введите число, которое вы хотите найти в массиве ";
+					cout << "Enter the number you want to find in the array ";
 					int key = InputValidation(MIN_ELEMENT, MAX_ELEMENT);
-					BinarSearch(dynamicArray, key);
+					BinarySearch(dynamicArray, key);
 					break;
 				}
 			}
