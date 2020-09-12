@@ -4,16 +4,16 @@
 
 void MenuText();
 //Stack
-int MenuStack(Stack* stack);
-void MenuStackText();
+int PrintMenuStack(Stack* stack);
+void PrintMenuStackText();
 void ShowStack(Stack* stack);
 //RingBuffer
-int MenuBuffer(RingBuffer* ring);
-void MenuBufferText();
+int PrintMenuBuffer(RingBuffer* ring);
+void PrintMenuBufferText();
 void ShowBuffer(RingBuffer* ring);
 //Queue
-int MenuQueueBuffer(QueueRingBuffer* queue);
+int PrintMenuQueueBuffer(QueueRingBuffer* queue);
 void ShowQueueBuffer(QueueRingBuffer* queue);
-int MenuQueueStack(QueueStack*queue);
+int PrintMenuQueueStack(QueueStack*queue);
 void ShowQueueStack(QueueStack* queue);
-void MenuQueueText();
+void PrintMenuQueueText();

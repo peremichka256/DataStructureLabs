@@ -6,7 +6,6 @@
 
 int main() 
 {
-	setlocale(LC_ALL, "Rus");
 	int button;
 	bool isExitFromWhile = true;
 
@@ -20,43 +19,47 @@ int main()
 		{
 			case buttonForEnd:
 			{
-				cout << "\nРабота окончена\n";
+				cout << "\nWork is completing.\n";
 				return 0;
 			}
 			case 1:
 			{
-				cout << "Введите сколько элеменетов будет в стеке (не больше " 
-					<< MAX_SIZE << " и не меньше " << MIN_SIZE << ") ";
+				cout << "Enter how many elemens will be in the stack "
+					<< "(not more than " << MAX_SIZE
+					<< " and not less than " << MIN_SIZE << ") ";
 				int size = InputValidation(MIN_SIZE, MAX_SIZE);
 				system("cls");
-				MenuStack(InitStack(size));
+				PrintMenuStack(InitStack(size));
 				break;
 			}
 			case 2:
 			{
-				cout << "Введите сколько элеменетов будет в вашем буфере (не больше " 
-					<< MAX_SIZE << " и не меньше " << MIN_SIZE << ") ";
+				cout << "Enter how many elemens will be in the buffer "
+					<< "(not more than " << MAX_SIZE
+					<< " and not less than " << MIN_SIZE << ") ";
 				int size = InputValidation(MIN_SIZE, MAX_SIZE);
 				system("cls");
-				MenuBuffer(InitBuffer(size));
+				PrintMenuBuffer(InitBuffer(size));
 				break;
 			}
 			case 3:
 			{
-				cout << "Введите сколько элеменетов будет в вашей очереди (не больше " 
-					<< MAX_SIZE << " и не меньше " << MIN_SIZE << ") ";
+				cout << "Enter how many elemens will be in the queue buffer "
+					<< "(not more than " << MAX_SIZE
+					<< " and not less than " << MIN_SIZE << ") ";
 				int size = InputValidation(MIN_SIZE, MAX_SIZE);
 				system("cls");
-				MenuQueueBuffer(CreateQueueBuffer(size));
+				PrintMenuQueueBuffer(CreateQueueBuffer(size));
 				break;
 			}
 			case 4:
 			{
-				cout << "Введите сколько элеменетов будет в вашей очереди (не больше " 
-					<< MAX_SIZE << " и не меньше " << MIN_SIZE << ") ";
+				cout << "Enter how many elemens will be in the queue stack "
+					<< "(not more than " << MAX_SIZE
+					<< " and not less than " << MIN_SIZE << ") ";
 				int size = InputValidation(MIN_SIZE, MAX_SIZE);
 				system("cls");
-				MenuQueueStack(CreateQueueStack(size));
+				PrintMenuQueueStack(CreateQueueStack(size));
 				break;
 			}
 		}

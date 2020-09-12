@@ -22,6 +22,6 @@ RingBuffer* InitBuffer(int size);
 void PushInBuffer(RingBuffer* ring, int value);
 int PopFromBuffer(RingBuffer* ring);
 void DeleteBuffer(RingBuffer* ring);
-int FreeMemoryInfo(RingBuffer* ring);
-int EmployedMemoryMemoryInfo(RingBuffer* ring);
+int GetFreeMemoryInfo(RingBuffer* ring);
+int GetEmployedMemoryInfo(RingBuffer* ring);
 void AddNewNode(RingBuffer* ring);

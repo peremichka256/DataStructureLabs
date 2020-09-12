@@ -41,8 +41,7 @@ int InputValidation(int min, int max)
 				|| stoll(inputValue) < min
 				|| stoll(inputValue) > max)
 			{
-				cout << endl << "Вы ввели значение вне доступного диапозона,"
-					<< " попробуйте заново ";
+				cout << endl << "Error! Try again: ";
 				inputValue.clear();
 			}
 			else
@@ -53,7 +52,7 @@ int InputValidation(int min, int max)
 		}
 		else
 		{
-			cout << endl << "Ошибка! Попробуйте еще раз: ";
+			cout << endl << "Error! Try again: ";
 			inputValue.clear();
 		}
 	}

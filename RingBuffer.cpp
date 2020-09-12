@@ -99,12 +99,12 @@ void AddNewNode(RingBuffer* ring)
 	ring->FreeMemory++;
 }
 
-int FreeMemoryInfo(RingBuffer* ring)
+int GetFreeMemoryInfo(RingBuffer* ring)
 {
 	return ring->FreeMemory;
 }
 
-int EmployedMemoryMemoryInfo(RingBuffer* ring)
+int GetEmployedMemoryInfo(RingBuffer* ring)
 {
 	return ring->EmployedMemory;
 }
