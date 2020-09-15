@@ -15,7 +15,7 @@ int main()
 	{
 		ShowArray(dynamicArray);
 		cout << "Here is ur array\n";
-		MenuText();
+		PrintMenuText();
 		int button = InputValidation(0, 8);
 
 		switch (button)

@@ -26,7 +26,7 @@ int InputValidation(int min, int max)
 	return value;
 }
 
-void MenuText()
+void PrintMenuText()
 {
 	cout << "	\n";
 	cout << "	 _________________________MENU__________________\n";
