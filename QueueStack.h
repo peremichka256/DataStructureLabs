@@ -8,7 +8,7 @@ struct QueueStack
 };
 
 QueueStack* CreateQueueStack(int size);
-void EnqueueStack(QueueStack*, int value);
-int DequeueStack(QueueStack*);
-void DeleteQueueStack(QueueStack*, int);
+void EnqueueStack(QueueStack* queue, int value);
+int DequeueStack(QueueStack* queue);
+void DeleteQueueStack(QueueStack* queue, int size);
 void SwapStack(Stack* cpiedStack, Stack* secondStack);

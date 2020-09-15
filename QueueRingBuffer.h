@@ -7,6 +7,6 @@ struct QueueRingBuffer
 };
 
 QueueRingBuffer* CreateQueueBuffer(int size);
-void EnqueueBuffer(QueueRingBuffer*, int value);
-int DequeueBuffer(QueueRingBuffer*, int);
-void DeleteQueueBuffer(QueueRingBuffer*, int size);
+void EnqueueBuffer(QueueRingBuffer* queue, int value);
+int DequeueBuffer(QueueRingBuffer* queue, int);
+void DeleteQueueBuffer(QueueRingBuffer* queue, int size);
