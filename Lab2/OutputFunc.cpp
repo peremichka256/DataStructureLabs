@@ -20,7 +20,7 @@ void ShowList(List* ourList)
 	}
 }
 
-void MenuText()
+void PrintMenuText()
 {
 	cout << "	\n";
 	cout << "	 _________________________MENU____________________\n";

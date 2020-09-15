@@ -10,16 +10,16 @@ struct List
 	Node* Tail;
 };
 
-void MenuText();
+void PrintMenuText();
 List* CreatingList();
-void Initialization(List*, int itemNumber);
-void AddItem(List*, int index, int newItemValue);
-void Sort(List*);
-int LineSearch(List*, int searchItemValue);
-void ShowList(List*);
-void DeleteList(List*);
-void DeleteItem(List*, int index);
-bool IsListEmpty(List*);
+void Initialization(List* list, int itemNumber);
+void AddItem(List* list, int index, int newItemValue);
+void Sort(List* list);
+int LineSearch(List* list, int searchItemValue);
+void ShowList(List* list);
+void DeleteList(List* list);
+void DeleteItem(List* list, int index);
+bool IsListEmpty(List* list);
 bool CheckingForInteger(string value);
 int InputValidation(int min, int max);
 Node* GetNode(List*, int index);

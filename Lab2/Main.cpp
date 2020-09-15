@@ -11,7 +11,7 @@ int main()
 	while (isExitFromWhile)
 	{
 		ShowList(list);
-		MenuText();
+		PrintMenuText();
 		int button = InputValidation(0, 7);
 
 		switch (button)
