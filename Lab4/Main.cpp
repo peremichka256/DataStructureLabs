@@ -12,26 +12,26 @@ int main()
 
 	while (isExitFromWhile)
 	{
-		MainMenuText();
+		PrintMainMenuText();
 		int button = InputValidation(0, 2);
 
 		switch (button)
 		{
 			case 0:
 			{
-				cout << "\nРабота окончена\n";
+				cout << "\nWork is completing!\n";
 				return 0;
 			}
 			case 1:
 			{
 				system("cls");
-				MenuHashTable(CreateTable(MIN_HASHTABLE_SIZE));
+				StartMenuHashTable(CreateTable(MIN_HASHTABLE_SIZE));
 				break;
 			}
 			case 2:
 			{
 				system("cls");
-				MenuDictionary(CreateDictionary());
+				StartMenuDictionary(CreateDictionary());
 				break;
 			}
 		}

@@ -7,10 +7,9 @@ struct Dictionary
 };
 
 Dictionary* CreateDictionary();
-//TODO: naming
-Node* FindValue(Dictionary*, string);
-bool InsertByKey(Dictionary*, Node*, string);
-bool RemoveByKey(Dictionary*, string);
+Node* FindValue(Dictionary* dictionary, string key);
+bool InsertByKey(Dictionary* dictionary, Node* insertedNode, string key);
+bool RemoveByKey(Dictionary* dictionary, string key);
 void DeleteDictionary(Dictionary* dictionary);
 
 int const MIN_DICTIONARY_SIZE = 4;

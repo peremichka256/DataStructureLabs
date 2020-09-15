@@ -1,38 +1,38 @@
 #include "OutputInputFunc.h"
 
-void MainMenuText()
+void PrintMainMenuText()
 {
-	cout << " _________________MENU_______________\n";
-	cout << " |Для завершени работы нажмите 0.    |\n";
-	cout << " |Для работы с таблицей нажмите 1.   |\n";
-	cout << " |Для со словарем нажмите 2.         |\n";
-	cout << " |___________________________________|\n";
+	cout << " _________________MENU________________\n";
+	cout << " |To complet the work, press 0.       |\n";
+	cout << " |To work with the hashtable, press 1.|\n";
+	cout << " |To work with dictionary, press 2.   |\n";
+	cout << " |____________________________________|\n";
 	cout << endl;
 }
 
-void MenuHashTableText()
+void PrintMenuHashTableText()
 {
 	cout << " ______________________MENU____________________\n";
-	cout << " |Для завершени работы нажмите 0.              |\n";
-	cout << " |Для добавления записи в таблицу нажмите 1.   |\n";
-	cout << " |Для удаления записи из таблицы нажмите 2.    |\n";
-	cout << " |Для поиска записи в таблице нажмите 3.       |\n";
+	cout << " |To complet the work, press 0.                |\n";
+	cout << " |To insert a node in the hashtable, press 1.  |\n";
+	cout << " |To remove a node from the hashtable, press 2.|\n";
+	cout << " |To find a node in the hashtable, press 1.    |\n";
 	cout << " |_____________________________________________|\n";
 	cout << endl;
 }
 
-void MenuDictionaryText()
+void PrintMenuDictionaryText()
 {
 	cout << " ______________________MENU____________________\n";
-	cout << " |Для завершени работы нажмите 0.              |\n";
-	cout << " |Для добавления записи в словарь нажмите 1.   |\n";
-	cout << " |Для удаления записи из словаря нажмите 2.    |\n";
-	cout << " |Для поиска записи в словаре нажмите 3.       |\n";
+	cout << " |To complet the work, press 0.             |\n";
+	cout << " |To written in the dictionary, press 1.  |\n";
+	cout << " |To remove from the dictionary, press 2.|\n";
+	cout << " |To find in the hashtable, press 1.    |\n";
 	cout << " |_____________________________________________|\n";
 	cout << endl;
 }
 
-int MenuHashTable(HashTable* hashTable)
+int StartMenuHashTable(HashTable* hashTable)
 {
 	bool isExitFromWhile = true;
 
@@ -45,7 +45,7 @@ int MenuHashTable(HashTable* hashTable)
 			hashTable = Rehashing(hashTable);
 		}
 		ShowTable(hashTable);
-		MenuHashTableText();
+		PrintMenuHashTableText();
 		int button = InputValidation(0, 3);
 
 		switch (button)
@@ -58,9 +58,9 @@ int MenuHashTable(HashTable* hashTable)
 			}
 			case 1:
 			{
-				cout << "Введите Key ";
+				cout << "Enter the Key ";
 				string key = InputKeyOrValue();
-				cout << "Введите Value ";
+				cout << "Enter the Value ";
 				string value = InputKeyOrValue();
 				Node* newNode = CreateNewNode(key, value);
 				int newNodeIndex = HashFunction(key, hashTable->Size);
@@ -69,38 +69,38 @@ int MenuHashTable(HashTable* hashTable)
 
 				if (isInserted == false)
 				{
-					ErrorMessegeRepeat();
+					PrintErrorRepeat();
 				}
 				break;
 			}
 			case 2:
 			{
-				cout << "Введите Key записи, которую хотите удалить ";
+				cout << "Enter the delete key ";
 				string key = InputKeyOrValue();
 				system("cls");
 				bool isRemoved = RemoveNode(hashTable, key);
 
 				if (isRemoved == false)
 				{
-					ErrorMessegeRemove();
+					PrintErrorRemove();
 				}
 				break;
 			}
 			case 3:
 			{
-				cout << "Введите Key записи, которую хотите найти ";
+				cout << "Enter the search key ";
 				string key = InputKeyOrValue();
 				system("cls");
 				Node* foundNode = FindNode(hashTable, key);
 
 				if (foundNode)
 				{
-					cout << "По вашему запросу была найдена информация "
+					cout << "Information was found on your request: "
 						<< foundNode->Value << endl;
 				}
 				else
 				{
-					cout << "Запись не найдена" << endl;
+					cout << "Information was not found on your request." << endl;
 				}
 				break;
 			}
@@ -108,7 +108,7 @@ int MenuHashTable(HashTable* hashTable)
 	}
 }
 
-int MenuDictionary(Dictionary* dictionary)
+int StartMenuDictionary(Dictionary* dictionary)
 {
 	bool isExitFromWhile = true;
 
@@ -122,7 +122,7 @@ int MenuDictionary(Dictionary* dictionary)
 		}
 		ShowDictonary(dictionary);
 		ShowTable(dictionary->Table);
-		MenuDictionaryText();
+		PrintMenuDictionaryText();
 		int button = InputValidation(0, 3);
 
 		switch (button)
@@ -135,9 +135,9 @@ int MenuDictionary(Dictionary* dictionary)
 			}
 			case 1:
 			{
-				cout << "Введите Key ";
+				cout << "Enter the Key ";
 				string key = InputKeyOrValue();
-				cout << "Введите Value ";
+				cout << "Enter the Value ";
 				string value = InputKeyOrValue();
 				Node* newNode = CreateNewNode(key, value);
 				system("cls");
@@ -145,38 +145,38 @@ int MenuDictionary(Dictionary* dictionary)
 
 				if (isInserted == false)
 				{
-					ErrorMessegeInsert();
+					PrintErrorInsert();
 				}
 				break;
 			}
 			case 2:
 			{
-				cout << "Введите Key записи, которую хотите удалить ";
+				cout << "Enter the delete key ";
 				string key = InputKeyOrValue();
 				system("cls");
 				bool isRemoved = RemoveByKey(dictionary, key);
 
 				if (isRemoved == false)
 				{
-					ErrorMessegeRemove();
+					PrintErrorRemove();
 				}
 				break;
 			}
 			case 3:
 			{
-				cout << "Введите Key записи, которую хотите найти ";
+				cout << "Enter the search key ";
 				string key = InputKeyOrValue();
 				system("cls");
 				Node* foundNode = FindValue(dictionary, key);
 
 				if (foundNode)
 				{
-					cout << "По вашему запросу была найдена информация "
+					cout << "Information was found on your request: "
 						<< foundNode->Value << endl;
 				}
 				else
 				{
-					cout << "Запись не найдена" << endl;
+					cout << "Information was not found on your request." << endl;
 				}
 				break;
 			}
@@ -244,19 +244,19 @@ void PrintNode(Node* node, int index)
 		<< " Value: " << node->Value << endl;
 }
 
-void ErrorMessegeInsert()
+void PrintErrorInsert()
 {
-	cout << "Ошибка! Вы пытаетесь вставить элемент с уже существующим key\n";
+	cout << "Error! You are trying to insert an element with existing key\n";
 }
 
-void ErrorMessegeRemove()
+void PrintErrorRemove()
 {
-	cout <<"Ошибка! Вы пытаетесь удалить несуществующий элемент\n";
+	cout <<"Error! You are trying to remove an item that doesn't exist\n";
 }
 
-void ErrorMessegeRepeat()
+void PrintErrorRepeat()
 {
-	cout << "Ошибка! Вы пытаетесь вставить уже существующий элемент\n";
+	cout << "Error! You are trying to insert an item that does exist\n";
 }
 
 string InputKeyOrValue()
