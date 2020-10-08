@@ -19,7 +19,7 @@ int LineSearch(List* list, int searchItemValue);
 void ShowList(List* list);
 void DeleteList(List* list);
 void DeleteItem(List* list, int index);
-bool IsListEmpty(List* list);
+bool IsListNotEmpty(List* list);
 bool CheckingForInteger(string value);
 int InputValidation(int min, int max);
 Node* GetNode(List*, int index);

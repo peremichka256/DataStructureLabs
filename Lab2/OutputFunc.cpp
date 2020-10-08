@@ -5,9 +5,9 @@ void ShowList(List* ourList)
 {
 	Node* current = ourList->Head;
 
-	if (IsListEmpty(ourList))
+	if (IsListNotEmpty(ourList))
 	{
-		cout <<  ourList->Size << " items at ur lsit.\n";
+		cout <<  ourList->Size << " items at ur list.\n";
 		for (int i = 0; i < ourList->Size; i++)
 		{
 			cout << "[" << i << "] " << current->Data << endl;

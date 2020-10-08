@@ -29,7 +29,7 @@ void Initialization(List* list, int itemNumber)
 
 void DeleteItem(List* list, int index)
 {
-	if (IsListEmpty(list))
+	if (IsListNotEmpty(list))
 	{
 		if (list->Head->Prev == list->Head->Next)
 		{
@@ -62,7 +62,7 @@ void DeleteItem(List* list, int index)
 
 void DeleteList(List* list)
 {
-	if (IsListEmpty)
+	if (IsListNotEmpty)
 	{
 		Node* current = list->Head;
 
@@ -124,7 +124,7 @@ List* CreatingList()
 
 void Sort(List* list)
 {
-	if (IsListEmpty(list))
+	if (IsListNotEmpty(list))
 	{
 		for (int i = 0; i < list->Size; i++)
 		{
@@ -167,7 +167,7 @@ void Sort(List* list)
 	}
 }
 
-bool IsListEmpty(List* list)
+bool IsListNotEmpty(List* list)
 {
 	if (list->Size == 0)
 	{
@@ -206,7 +206,7 @@ Node* GetNode(List* list, int index)
 
 int LineSearch(List* list, int searchItemValue)
 {
-	if (IsListEmpty(list))
+	if (IsListNotEmpty(list))
 	{
 		Node* current = list->Head;
 

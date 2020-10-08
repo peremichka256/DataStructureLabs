@@ -51,7 +51,7 @@ int main()
 			}
 			case 4:
 			{
-				if (IsListEmpty(list))
+				if (IsListNotEmpty(list))
 				{
 					cout << "Enter the number of the node after which the new "
 						<< "node is insert ";
@@ -65,7 +65,7 @@ int main()
 			}
 			case 5:
 			{
-				if (IsListEmpty(list))
+				if (IsListNotEmpty(list))
 				{
 					cout << "Enter the number of the node before which the new "
 						<< "node is insert ";
